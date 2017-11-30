@@ -1,10 +1,18 @@
 
 ![](sjylogo.png)
 # 安卓开发类库（该框架还在升级完善中）
-####  考虑到实际业务需求，已将网络请求部分和工具库部分独立拆分，可点击下方链接分别引用
-### [网络请求库](https://github.com/shajinyang/SjyNetHelper)
+####  考虑到实际业务需求，已将网络请求部分和工具库部分和UI组件部分独立拆分，可点击下方链接分别引用
+#### [网络请求库(基于Retrofit+okhttp封装的网络请求)](https://github.com/shajinyang/SjyNetHelper)
 [https://github.com/shajinyang/SjyNetHelper](https://github.com/shajinyang/SjyNetHelper)
-### [常用工具库](https://github.com/shajinyang/SjyndroidUtil)
+#### [UI组件库(各种自定义view的集合)](https://github.com/shajinyang/SjyNetHelper)
+[https://github.com/shajinyang/SjyNetHelper](https://github.com/shajinyang/SjyNetHelper)
+#### [常用工具库(各种常用util)](https://github.com/shajinyang/SjyndroidUtil)
+[https://github.com/shajinyang/SjyndroidUtil](https://github.com/shajinyang/SjyndroidUtil)
+
+#### 另外作者还封装了一些其他的工具库日常开发也会用到
+#### [支付类库(一行代码搞定支付宝和微信支付)](https://github.com/shajinyang/SjyNetHelper)
+[https://github.com/shajinyang/SjyNetHelper](https://github.com/shajinyang/SjyNetHelper)
+#### [图片选择库(单选，多选，裁剪，压缩)](https://github.com/shajinyang/SjyndroidUtil)
 [https://github.com/shajinyang/SjyndroidUtil](https://github.com/shajinyang/SjyndroidUtil)
 
 
@@ -30,7 +38,7 @@
 
       第三步：
       在自己的application里初始化
-      Sjutil.init(this);
+      Sndroid.init(this);
 
 
 
@@ -38,29 +46,10 @@
 ####  BaseActivity
       1,支持自义定状态栏样式，透明状态栏，无状态栏
       2,支持databinding数据绑定
-      3,支持本地图片选择，拍照
 ##### 使用示例
-      照片、拍照选择：
-      choosePicWithCompress(new IOnChoosePicListener() {
-                          @Override
-                          public void onSuccess(final TResult result) {
-                             //todo 自行处理
-                          }
-                          @Override
-                          public void onFailure(TResult result, String msg) {
-                             //todo 自行处理
-                          }
-
-                          @Override
-                          public void onCancel() {
-                              //todo 自行处理
-                          }
-                      },true);
-
         状态栏设置
         isHideStateBar=false;//是否隐藏状态栏，默认不隐藏
         isTransStateBar=false;//是否透明状态栏，默认否，配合fitsystemwindow使用（可改变某一个activity的状态栏颜色）
-
         数据绑定用法同databinding
 
 #### BaseFragment
@@ -97,152 +86,28 @@
             adapter.notifyDataSetChanged();
         }
 
-### 常用帮助类
-#### Intenter
-     意图跳转帮助类
-#### Sper
-     SharedPerfrenced 帮助类
-#### Toaster
-     吐司帮助类
-#### UIer
-     UI帮助类
-     显示加载中弹框
+### 缓存类
+#### CacheHelper
+     硬盘文件缓存
 
-### 常用自定义View
-#### CodeView
-    倒计时View,基于TextView
-    可设置显示文字，倒计时时间长度
-    使用示例：
-    xml:
-    <com.zx.xsk.views.counttimeview.CodeView
-                android:id="@+id/code_view"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:gravity="center"
-                android:background="@drawable/shape_bg_accent_round"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:textColor="@color/whiteff"
-                android:layout_marginRight="16dp"
-                />
-
-
-    java:
-    binding.codeView.setOnTimeListener(new OnTimeListener() {
-                @Override
-                public void startTime() {
-
-                }
-
-                @Override
-                public void endTime() {
-
-                }
-
-                @Override
-                public boolean onClickTime() {
-                    if(TextViewUtil.isEmpty(binding.tel)){
-                        Toaster.showToast("手机号未填写");
-                        return false;
-                    }else if(!TextViewUtil.isMobileNO(binding.tel.getText().toString().trim())){
-                        Toaster.showToast("手机号格式不正确");
-                        return false;
-                    }else {
-                        getTelCode();
-                    }
-                    return true;
-                }
-            });
-
-#### AnimatedImageSpan
-    支持gif的imagespan
-#### MyImageSpan
-    居中的imagespan
-#### SLoadingView
-    加载状态view（网络错误，空数据，加载中，无网络）
-#### LoadingRelativeLayout
-    加载状态父布局（网络错误，空数据，加载中，无网络）
-    使用示例：
-    xml:
-     <com.zx.xsk.views.LoadingRelativeLayout
-            android:id="@+id/loading"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        ...
-
-     </com.zx.xsk.views.LoadingRelativeLayout>
-
-      java:
-      loadingRelativeLayout.showNoNet();//显示网络未连接
-      loadingRelativeLayout.showLoading();//显示加载中
-      loadingRelativeLayout.showEmpty();//显示空数据
-      loadingRelativeLayout.showError();//显示网络错误
-      loadingRelativeLayout.clearAll();//关闭状态视图
-      //状态点击回调
-      loadingRelativeLayout.setOnStateClick(new OnStateClickListener() {
-        @Override
-        public void onClickError() {
-            //todo
-        }
-
-        @Override
-        public void onClickNoNet() {
-            //todo
-        }
-      });
-
-#### MultiKeyBoardView
-     复合键盘布局，基于viewpager,主要是优化了系统键盘和view的显示逻辑
-     使用示例：
-     xml:
-     <com.zx.xsk.views.mutikeyboardview.MultiKeyBoardView
-                 android:id="@+id/mul"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical"
-                 />
-
-      java:
-      binding.mulitikeyboardview
-             .initKeyBoardView(this,titles,fragmentArrayList,binding.richEditor)
-             .setTabColor(0xff333333)
-             .setTabTxtColor(0xff999999,0xffffffff);
-      具体参数含义看源码注释
-
-#### MyNestedScorllView
-     带底部滑动监听的nestscorllview
-#### MyRecycleview
-     带底部滑动监听的recycleview
-#### NestedRecycleView
-     嵌套nestedscorllview的recycleview,解决滑动冲突
-     配合NestGridLayoutManager、NestLinearLayoutManager使用
-
-#### SToolBarView
-     toolbar封装
-#### BubbleImageView
-     仿微信聊天气泡Imageview
-#### CircleImageView
-     圆形图片，支持边框设置
-#### CircleRectangleView
-     圆角图片（可设置圆形图片）支持边框设置
-#### MyNumberPicker
-     设置picker边框和字体
-#### NoScrollViewPager
-     无滚动viewerpager
-#### SquareLinearLayout
-     正方形布局
-
-#### DragFloatImageView
-    可拖拽带吸附效果的imageview
-
-
+#### SharedPrefrencer
+     sp轻量缓存
 
 ### 组件
-#### ImageLoader
-     基于glide的图片加载组件
+#### Alerter
+     弹框类，加载中显示框
 
-#### PermissionRequester
-     android6.0/7.0以上动态权限申请
+#### ImageLoader
+     图片加载
+
+#### PermissionHelper
+     权限申请帮助类
+
+#### SnackBarhelper
+     自定义snackbar操作类
+
+#### Toaster
+     自定义吐司操作类
 
 
 
