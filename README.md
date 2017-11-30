@@ -2,18 +2,13 @@
 ![](sjylogo.png)
 # 安卓开发类库（该框架还在升级完善中）
 ####  考虑到实际业务需求，已将网络请求部分和工具库部分和UI组件部分独立拆分，可点击下方链接分别引用
-#### [网络请求库(基于Retrofit+okhttp封装的网络请求)](https://github.com/shajinyang/SjyNetHelper)
-[https://github.com/shajinyang/SjyNetHelper](https://github.com/shajinyang/SjyNetHelper)
-#### [UI组件库(各种自定义view的集合)](https://github.com/shajinyang/CommonCustomView)
-[https://github.com/shajinyang/CommonCustomView](https://github.com/shajinyang/CommonCustomView)
-#### [常用工具库(各种常用util)](https://github.com/shajinyang/SjyndroidUtil)
-[https://github.com/shajinyang/SjyndroidUtil](https://github.com/shajinyang/SjyndroidUtil)
+###### [网络请求库(基于Retrofit+okhttp封装的网络请求)https://github.com/shajinyang/SjyNetHelper](https://github.com/shajinyang/SjyNetHelper)
+###### [UI组件库(各种自定义view的集合)https://github.com/shajinyang/CommonCustomView](https://github.com/shajinyang/CommonCustomView)
+###### [常用工具库(各种常用util)https://github.com/shajinyang/SjyndroidUtil](https://github.com/shajinyang/SjyndroidUtil)
 
-#### 另外作者还封装了一些其他的工具库日常开发也会用到
-#### [支付类库(一行代码搞定支付宝和微信支付)](https://github.com/shajinyang/SPayUtil)
-[https://github.com/shajinyang/SPayUtil](https://github.com/shajinyang/SPayUtil)
-#### [图片选择库(单选，多选，裁剪，压缩)](https://github.com/shajinyang/PhotoPicker)
-[https://github.com/shajinyang/PhotoPicker](https://github.com/shajinyang/PhotoPicker)
+#### 另外我还封装了一些其他的工具库日常开发也会用到，可分别引用
+###### [支付类库(一行代码搞定支付宝和微信支付)https://github.com/shajinyang/SPayUtil](https://github.com/shajinyang/SPayUtil)
+###### [图片选择库(单选，多选，裁剪，压缩)https://github.com/shajinyang/PhotoPicker](https://github.com/shajinyang/PhotoPicker)
 
 
 
