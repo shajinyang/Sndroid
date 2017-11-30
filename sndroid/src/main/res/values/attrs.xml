@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+    
+    <declare-styleable name="CircleRectangleView">
+        <attr name="type" format="enum">
+            <enum name="circle" value="0"/>
+            <enum name="round" value="1"/>
+        </attr>
+        <attr name="round_Radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+    <!--corner_color 边角颜色，
+    scanner_color 扫描线颜色
+    possible_result_color 扫描点颜色
+    frame_color 扫描框边线颜色
+    mask_color 模糊区域颜色
+    label_text  框上方提示
+-->
+    <declare-styleable name="ViewfinderView">
+        <attr name="corner_color" format="color"/>
+        <attr name="laser_color" format="color"/>
+        <attr name="frame_color" format="color" />
+        <attr name="mask_color" format="color" />
+        <attr name="result_point_color" format="color"/>
+        <attr name="result_color" format="color" />
+        <attr name="label_text_color" format="color"/>
+        <attr name="label_text" format="string"/>
+        <attr name="label_text_size" format="float"/>
+    </declare-styleable>
+
+<!--圆角指示器属性-->
+    <declare-styleable name="CircleIndicator">
+        <attr name="ci_radius" format="dimension"/>
+        <attr name="ci_margin" format="dimension"/>
+        <attr name="ci_background" format="color|integer"/>
+        <attr name="ci_selected_background" format="color|integer"/>
+        <attr name="ci_gravity">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+        <attr name="ci_mode">
+            <enum name="inside" value="0"/>
+            <enum name="outside" value="1"/>
+            <enum name="solo" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BubbleImageView">
+        <attr name="bubble_angle" format="dimension"/>
+        <attr name="bubble_arrowHeight" format="dimension"/>
+        <attr name="bubble_arrowOffset" format="dimension"/>
+        <attr name="bubble_arrowTop" format="dimension"/>
+        <attr name="bubble_arrowWidth" format="dimension"/>
+        <attr name="bubble_arrowLocation" format="integer"/>
+    </declare-styleable>
+
+    <!--loadingview属性-->
+    <declare-styleable name="SLoadingView">
+        <attr name="loading_view" format="integer"/>
+        <attr name="no_net_view" format="integer"/>
+        <attr name="error_net_view" format="integer"/>
+        <attr name="empty_data_view" format="integer"/>
+    </declare-styleable>
+
+</resources>

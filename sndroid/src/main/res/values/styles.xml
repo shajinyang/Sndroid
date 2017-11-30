@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="PhotoViewTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
+    <!--加载中dialog弹框progress颜色   style样式-->
+    <style name="LoadingProGressBarTheme" parent="Widget.AppCompat.ProgressBar">
+        <item name="colorAccent">#666666</item><!--colorAccent兼容低版本，而不是Android:colorAccent-->
+    </style>
+
+
+    <!--加载中dialog弹框 builder主题 theme样式-->
+    <style name="LoadingDialogTheme" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@color/transparentColor</item> <!--布局背景色-->
+        <item name="android:backgroundDimEnabled">false</item> <!--dialog与下层activity的背景色-->
+        <item name="colorAccent">#666666</item><!--colorAccent兼容低版本，而不是Android:colorAccent-->
+    </style>
+
+
+</resources>

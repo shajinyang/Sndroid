@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LoadingProGressBarTheme" parent="Widget.AppCompat.ProgressBar">
+        <item name="colorAccent">#666666</item><!--colorAccent兼容低版本，而不是Android:colorAccent-->
+        <item name="android:indeterminateTint">#ffffff</item><!--progressbar 圆圈颜色-->
+    </style>
+</resources>
