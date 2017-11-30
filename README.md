@@ -4,16 +4,16 @@
 ####  考虑到实际业务需求，已将网络请求部分和工具库部分和UI组件部分独立拆分，可点击下方链接分别引用
 #### [网络请求库(基于Retrofit+okhttp封装的网络请求)](https://github.com/shajinyang/SjyNetHelper)
 [https://github.com/shajinyang/SjyNetHelper](https://github.com/shajinyang/SjyNetHelper)
-#### [UI组件库(各种自定义view的集合)](https://github.com/shajinyang/SjyNetHelper)
-[https://github.com/shajinyang/SjyNetHelper](https://github.com/shajinyang/SjyNetHelper)
+#### [UI组件库(各种自定义view的集合)](https://github.com/shajinyang/CommonCustomView)
+[https://github.com/shajinyang/CommonCustomView](https://github.com/shajinyang/CommonCustomView)
 #### [常用工具库(各种常用util)](https://github.com/shajinyang/SjyndroidUtil)
 [https://github.com/shajinyang/SjyndroidUtil](https://github.com/shajinyang/SjyndroidUtil)
 
 #### 另外作者还封装了一些其他的工具库日常开发也会用到
-#### [支付类库(一行代码搞定支付宝和微信支付)](https://github.com/shajinyang/SjyNetHelper)
-[https://github.com/shajinyang/SjyNetHelper](https://github.com/shajinyang/SjyNetHelper)
-#### [图片选择库(单选，多选，裁剪，压缩)](https://github.com/shajinyang/SjyndroidUtil)
-[https://github.com/shajinyang/SjyndroidUtil](https://github.com/shajinyang/SjyndroidUtil)
+#### [支付类库(一行代码搞定支付宝和微信支付)](https://github.com/shajinyang/SPayUtil)
+[https://github.com/shajinyang/SPayUtil](https://github.com/shajinyang/SPayUtil)
+#### [图片选择库(单选，多选，裁剪，压缩)](https://github.com/shajinyang/PhotoPicker)
+[https://github.com/shajinyang/PhotoPicker](https://github.com/shajinyang/PhotoPicker)
 
 
 
@@ -33,7 +33,7 @@
       在module的gradle里配置
       dependencies {
          ...
-      	 compile 'com.github.shajinyang:SjyndriodLibrarys:1.2.3'
+      	 compile 'com.github.shajinyang:Sndroid:1.0.0'
       }
 
       第三步：
