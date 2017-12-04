@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.sjy.sndroid.weight.alert.Alerter;
 import com.sjy.sndroid.weight.permission.PermissionHelper;
 import com.sjy.sndroid.weight.permission.business.IpermissionCallBackListener;
 import com.sjy.sndroid.weight.snackbar.SnackBarHelper;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isClick) {
+                /*if(isClick) {
                     Toaster.showCustomToast(LayoutInflater.from(MainActivity.this).inflate(R.layout.head_view, null));
                     SnackBarHelper.showShort(findViewById(R.id.btn),"短时间显示");
                     isClick=false;
@@ -59,7 +60,20 @@ public class MainActivity extends AppCompatActivity {
                      });
                     SnackBarHelper.showCustomViewAlways(findViewById(R.id.btn),view);
                     isClick=true;
-                }
+                }*/
+//                Alerter.LoadingAlert(MainActivity.this).show();
+                Alerter.PopAlert(MainActivity.this
+                        ,LayoutInflater.from(MainActivity.this).inflate(R.layout.head_view,null)
+                        ,findViewById(R.id.btn))
+                        .show();
+
+            }
+        });
+
+        findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Alerter.dismiss();
             }
         });
 

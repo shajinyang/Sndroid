@@ -4,9 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
 
 import com.sjy.sndroid.R;
+import com.sjy.sndroid.weight.alert.alerts.LoadingAlert;
+import com.sjy.sndroid.weight.alert.alerts.PopAlert;
+import com.sjy.sndroid.weight.alert.interfaces.IAlert;
 
 
 /**
@@ -16,44 +20,49 @@ import com.sjy.sndroid.R;
  */
 
 public class Alerter {
-    public static AlertDialog myloadingview;
-    private static Activity activity;
+    private static Alerter alerter;
+    private static LoadingAlert loadingAlert;
+    private static PopAlert popAlert;
+    private static IAlert iAlert;
 
-    /**
-     * 显示加载中弹框
-     * @param mContext
-     */
-    public static void showLoading(Context mContext){
-        if(myloadingview==null){
-            AlertDialog.Builder builder=new AlertDialog.Builder(mContext,R.style.LoadingDialogTheme);
-            myloadingview=builder.setView(LayoutInflater.from(mContext).inflate(R.layout.progress_view,null)).create();
-            myloadingview.setCanceledOnTouchOutside(false);
-            myloadingview.setCancelable(false);
-            Window dialogWindow = myloadingview.getWindow();
-            dialogWindow.setDimAmount(0);//设置昏暗度为0
+    public static Alerter LoadingAlert(Context mContext){
+        if(alerter==null){
+            alerter=new Alerter();
         }
-        myloadingview.show();
+        if(loadingAlert==null){
+            loadingAlert=new LoadingAlert();
+            loadingAlert.create(null,mContext);
+            iAlert=loadingAlert;
+        }
+        return alerter;
+    }
+
+    public static Alerter PopAlert(Context mContext,View customView,View anchorView){
+        if(alerter==null){
+            alerter=new Alerter();
+        }
+        if(popAlert==null){
+            popAlert=new PopAlert(anchorView);
+            popAlert.create(customView,mContext);
+            iAlert=popAlert;
+        }
+        return alerter;
+    }
+
+    public void show(){
+        iAlert.show();
+    }
+
+    public static void dismiss(){
+        iAlert.dismiss();
+    }
+
+    public static void destory(){
+        popAlert=null;
+        loadingAlert=null;
+        iAlert.destory();
     }
 
 
-    /**
-     * 关闭加载中弹框
-     */
-    public static void closeLoading(){
-        if(myloadingview!=null){
-            myloadingview.dismiss();
-        }
-    }
-
-
-
-    /**
-     * 清除加载中弹框
-     */
-    public static void destoryLoading(){
-        if(myloadingview!=null){
-            myloadingview=null;
-        }
-    }
 
 }

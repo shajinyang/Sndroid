@@ -90,7 +90,25 @@
 
 ### 组件
 #### Alerter
-     弹框类，加载中显示框
+     弹框类，加载中显示框,多功能popwindow弹出框，可以在任意view 下面弹出自定义view
+     使用示例：
+     //显示popview
+     Alerter.PopAlert(context
+                             ,view)//需要显示的自定义view
+                             ,findViewById(R.id.btn))//锚点view（从该view下方划出）
+                             .show();
+     //隐藏popview
+     Alerter.dismiss();
+     //清空popview
+     Alerter.destory();
+
+     //显示加载中
+     Alerter.LoadingAlert(context)
+            .show();
+     //关闭加载中
+     Alerter.dismiss();
+     //清空加载中
+     Alerter.destory();
 
 #### ImageLoader
      图片加载
