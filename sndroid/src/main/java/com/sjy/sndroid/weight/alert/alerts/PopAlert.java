@@ -28,7 +28,7 @@ public class PopAlert implements IAlert {
     private View bgView;
     private int startHeight;
     private boolean isOpen=false;
-
+    private boolean isAnim=false;
     public PopAlert(View AnchorView) {
         this.AnchorView = AnchorView;
     }
@@ -55,7 +55,7 @@ public class PopAlert implements IAlert {
 
     @Override
     public void show() {
-        if(isOpen)return;
+        if(isOpen||isAnim)return;
         relativeLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -78,11 +78,13 @@ public class PopAlert implements IAlert {
                     public void onAnimationStart(Animator animation) {
                         relativeLayout.setVisibility(View.VISIBLE);
                         bgView.setVisibility(View.VISIBLE);
+                        isAnim=true;
                     }
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         isOpen=true;
+                        isAnim=false;
                     }
 
                     @Override
@@ -102,7 +104,7 @@ public class PopAlert implements IAlert {
 
     @Override
     public void dismiss() {
-        if(!isOpen)return;
+        if(!isOpen||isAnim)return;
         relativeLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -121,12 +123,13 @@ public class PopAlert implements IAlert {
                 animatorSet.addListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
-
+                        isAnim=true;
                     }
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         isOpen=false;
+                        isAnim=false;
                     }
 
                     @Override
