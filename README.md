@@ -28,7 +28,7 @@
       在module的gradle里配置
       dependencies {
          ...
-      	 compile 'com.github.shajinyang:Sndroid:1.0.0'
+      	 compile 'com.github.shajinyang:Sndroid:1.0.1'
       }
 
       第三步：
@@ -94,9 +94,9 @@
      使用示例：
      //显示popview
      Alerter.PopAlert(context
-                             ,view)//需要显示的自定义view
-                             ,findViewById(R.id.btn))//锚点view（从该view下方划出）
-                             .show();
+                     ,view//需要显示的自定义view
+                     ,anchorView)//锚点view（从该view下方划出）
+                     .show();
      //隐藏popview
      Alerter.dismiss();
      //清空popview
