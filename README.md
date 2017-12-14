@@ -19,7 +19,7 @@
       在module的gradle里配置
       dependencies {
          ...
-      	 compile 'com.github.shajinyang:Sndroid:1.0.2'
+      	 compile 'com.github.shajinyang:Sndroid:1.0.3'
       }
 
       第三步：
@@ -98,25 +98,25 @@
                      .show();
      //隐藏popview
      Alerter.dismiss();
-     //清空popview
-     Alerter.destory();
 
      //显示加载中
      Alerter.LoadingAlert(context)
             .show();
      //关闭加载中
      Alerter.dismiss();
-     //清空加载中
-     Alerter.destory();
+
+
 
 #### ImageLoader
      图片加载
+     支持默认图片设置
 
 #### PermissionHelper
      权限申请帮助类
 
 #### SnackBarhelper
      自定义snackbar操作类
+     可显示默认snackbar样式，以及自定义的view样式
 
 #### Toaster
      自定义吐司操作类

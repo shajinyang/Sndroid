@@ -22,6 +22,12 @@
         android:text="减少"
         android:id="@+id/btn2"/>
   </LinearLayout>
-
+  <TextView
+      android:id="@+id/tv"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:text="我是背景"
+      android:gravity="center"
+      android:background="#fff678"/>
 
 </LinearLayout>

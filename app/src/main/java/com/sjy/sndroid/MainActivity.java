@@ -3,6 +3,7 @@ package com.sjy.sndroid;
 import android.Manifest;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -76,8 +77,14 @@ public class MainActivity extends AppCompatActivity {
                 Alerter.dismiss();
             }
         });
-
+        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toaster.showToast("我被点击了");
+            }
+        });
 
 
     }
+
 }

@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ public class PopAlert implements IAlert {
     private RelativeLayout relativeLayout;
     private View bgView;
     View contentView;
+    View customView;
     private int startHeight;
     private boolean isOpen=false;
     private boolean isAnim=false;
@@ -38,29 +40,38 @@ public class PopAlert implements IAlert {
     @Override
     public void create(View view, Context mContext) {
         this.mContext=mContext;
-        contentView = LayoutInflater.from(mContext)
-                .inflate(R.layout.alert_pop_view, null);
-        relativeLayout = contentView.findViewById(R.id.content_view);
-        bgView = contentView.findViewById(R.id.bg_view);
-        bgView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.setMargins(0, AnchorView.getBottom(), 0, 0);
-        if (view != null) {
-            relativeLayout.addView(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);//添加自定义view
-        }
-        ((Activity) mContext).addContentView(contentView, params);
-
+        customView=view;
     }
 
     @Override
     public void show() {
+        if(contentView==null) {
+            contentView = LayoutInflater.from(mContext)
+                    .inflate(R.layout.alert_pop_view, null);
+            relativeLayout = contentView.findViewById(R.id.content_view);
+            bgView = contentView.findViewById(R.id.bg_view);
+            bgView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
+            if (customView != null) {
+                relativeLayout.addView(customView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);//添加自定义view
+            }
+        }
         if(isOpen||isAnim)return;
-        relativeLayout.post(new Runnable() {
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, AnchorView.getBottom(), 0, 0);
+        ((Activity) mContext).addContentView(contentView, params);
+        relativeLayout.post(getAction());
+    }
+
+
+    //弹出动画
+    @NonNull
+    private Runnable getAction() {
+        return new Runnable() {
             @Override
             public void run() {
                 ViewWrapper tw = new ViewWrapper(relativeLayout);
@@ -103,13 +114,19 @@ public class PopAlert implements IAlert {
                 });
                 animatorSet.start();
             }
-        });
+        };
     }
 
     @Override
     public void dismiss() {
         if(!isOpen||isAnim)return;
-        relativeLayout.post(new Runnable() {
+        relativeLayout.post(getActionClose());
+    }
+
+    //关闭动画
+    @NonNull
+    private Runnable getActionClose() {
+        return new Runnable() {
             @Override
             public void run() {
                 ViewWrapper tw = new ViewWrapper(relativeLayout);
@@ -149,7 +166,7 @@ public class PopAlert implements IAlert {
                 });
                 animatorSet.start();
             }
-        });
+        };
     }
 
     @Override
@@ -158,6 +175,8 @@ public class PopAlert implements IAlert {
             ((ViewGroup)contentView.getParent()).removeView(contentView);//移除控件
         }
     }
+
+
 
 
 }
