@@ -26,16 +26,19 @@ public class PopAlert implements IAlert {
     private View AnchorView;//锚点view，用于显示pop的相对位置
     private RelativeLayout relativeLayout;
     private View bgView;
+    View contentView;
     private int startHeight;
     private boolean isOpen=false;
     private boolean isAnim=false;
+    private Context mContext;
     public PopAlert(View AnchorView) {
         this.AnchorView = AnchorView;
     }
 
     @Override
     public void create(View view, Context mContext) {
-        View contentView = LayoutInflater.from(mContext)
+        this.mContext=mContext;
+        contentView = LayoutInflater.from(mContext)
                 .inflate(R.layout.alert_pop_view, null);
         relativeLayout = contentView.findViewById(R.id.content_view);
         bgView = contentView.findViewById(R.id.bg_view);
@@ -51,6 +54,7 @@ public class PopAlert implements IAlert {
             relativeLayout.addView(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);//添加自定义view
         }
         ((Activity) mContext).addContentView(contentView, params);
+
     }
 
     @Override
@@ -130,6 +134,7 @@ public class PopAlert implements IAlert {
                     public void onAnimationEnd(Animator animation) {
                         isOpen=false;
                         isAnim=false;
+                        ((ViewGroup)contentView.getParent()).removeView(contentView);//移除控件
                     }
 
                     @Override
@@ -149,7 +154,9 @@ public class PopAlert implements IAlert {
 
     @Override
     public void destory() {
-        dismiss();
+        if(contentView!=null){
+            ((ViewGroup)contentView.getParent()).removeView(contentView);//移除控件
+        }
     }
 
 
