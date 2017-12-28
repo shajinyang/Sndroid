@@ -23,14 +23,14 @@ public class AppManager {
         return appManager;
     }
 
-    public static void addActivity(@Nullable Activity activity){
+    public  void addActivity(@Nullable Activity activity){
         if(mActivityStack==null){
             mActivityStack=new CopyOnWriteArrayList<>();
         }
         mActivityStack.add(activity);
     }
 
-    public static void removeActivity(Activity activity){
+    public  void removeActivity(Activity activity){
         try {
             if (activity != null) {
                 mActivityStack.remove(activity);
@@ -42,12 +42,16 @@ public class AppManager {
         }
     }
 
-    public static void removeActivity(Class<?> cls){
+    public  void removeActivity(Class<?> cls){
         for (Activity activity : mActivityStack) {
             if (activity.getClass().equals(cls)) {
                 removeActivity(activity);
             }
         }
+    }
+
+    public int getStackSize(){
+        return mActivityStack==null?0:mActivityStack.size();
     }
 
     /**

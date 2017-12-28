@@ -39,7 +39,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppManager.addActivity(this);
+        AppManager.getInstance().addActivity(this);
         mActivity=this;
         mContext=this;
         binding=DataBindingUtil.setContentView(this,bindLayout());
@@ -57,7 +57,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AppManager.removeActivity(this);
+        AppManager.getInstance().removeActivity(this);
     }
 
     /**
