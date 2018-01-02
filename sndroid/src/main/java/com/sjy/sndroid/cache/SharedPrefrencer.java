@@ -64,5 +64,11 @@ public class SharedPrefrencer {
         }
 
     }
+    public static void delete(String key){
+        preferences.edit().remove(key).commit();
+    }
+    public static void clearAll(){
+        preferences.edit().clear().commit();
+    }
 
 }
