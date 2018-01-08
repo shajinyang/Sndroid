@@ -16,7 +16,7 @@ import com.sjy.sndroid.Sndroid;
  */
 
 public class SnackBarHelper {
-
+    private static View  anchorView;
     private static Snackbar snackbar;
     private static Snackbar snackcustomviewbar;
 
@@ -26,11 +26,16 @@ public class SnackBarHelper {
      * @param msg
      */
     public static void showAlways(View view,String msg){
-        if(snackbar==null){
+        if(anchorView==null){
+            anchorView=view;
             snackbar=Snackbar.make(view,msg,Snackbar.LENGTH_INDEFINITE);
         }else {
-            snackbar.setText(msg);
-            snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
+            if(anchorView.equals(view)&&snackbar!=null){
+                snackbar.setText(msg);
+                snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
+            }else {
+                snackbar=Snackbar.make(view,msg,Snackbar.LENGTH_INDEFINITE);
+            }
         }
         snackbar.show();
     }
@@ -41,11 +46,16 @@ public class SnackBarHelper {
      * @param msg
      */
     public static void showLong(View view,String msg){
-        if(snackbar==null){
+        if(anchorView==null){
+            anchorView=view;
             snackbar=Snackbar.make(view,msg,Snackbar.LENGTH_LONG);
         }else {
-            snackbar.setText(msg);
-            snackbar.setDuration(Snackbar.LENGTH_LONG);
+            if(anchorView.equals(view)&&snackbar!=null){
+                snackbar.setText(msg);
+                snackbar.setDuration(Snackbar.LENGTH_LONG);
+            }else {
+                snackbar=Snackbar.make(view,msg,Snackbar.LENGTH_LONG);
+            }
         }
         snackbar.show();
     }
@@ -56,11 +66,16 @@ public class SnackBarHelper {
      * @param msg
      */
     public static void showShort(View view,String msg){
-        if(snackbar==null){
+        if(anchorView==null){
+            anchorView=view;
             snackbar=Snackbar.make(view,msg,Snackbar.LENGTH_SHORT);
         }else {
-            snackbar.setText(msg);
-            snackbar.setDuration(Snackbar.LENGTH_SHORT);
+            if(anchorView.equals(view)&&snackbar!=null){
+                snackbar.setText(msg);
+                snackbar.setDuration(Snackbar.LENGTH_SHORT);
+            }else {
+                snackbar=Snackbar.make(view,msg,Snackbar.LENGTH_SHORT);
+            }
         }
         snackbar.show();
     }
@@ -71,10 +86,15 @@ public class SnackBarHelper {
      * @param customView
      */
     public static void showCustomViewShort(View view,View customView){
-        if(snackcustomviewbar==null){
+        if(anchorView==null){
+            anchorView=view;
             snackcustomviewbar=Snackbar.make(view,"",Snackbar.LENGTH_SHORT);
         }else {
-            snackcustomviewbar.setDuration(Snackbar.LENGTH_SHORT);
+            if(anchorView.equals(view)&&snackcustomviewbar!=null){
+                snackcustomviewbar.setDuration(Snackbar.LENGTH_SHORT);
+            }else {
+                snackcustomviewbar=Snackbar.make(view,"",Snackbar.LENGTH_SHORT);
+            }
         }
         Snackbar.SnackbarLayout snackbarLayout= (Snackbar.SnackbarLayout) snackcustomviewbar.getView();
         snackbarLayout.setBackgroundColor(Color.TRANSPARENT);
@@ -88,10 +108,15 @@ public class SnackBarHelper {
      * @param customView
      */
     public static void showCustomViewAlways(View view,View customView){
-        if(snackcustomviewbar==null){
+        if(anchorView==null){
+            anchorView=view;
             snackcustomviewbar=Snackbar.make(view,"",Snackbar.LENGTH_INDEFINITE);
         }else {
-            snackcustomviewbar.setDuration(Snackbar.LENGTH_INDEFINITE);
+            if(anchorView.equals(view)&&snackcustomviewbar!=null){
+                snackcustomviewbar.setDuration(Snackbar.LENGTH_INDEFINITE);
+            }else {
+                snackcustomviewbar=Snackbar.make(view,"",Snackbar.LENGTH_INDEFINITE);
+            }
         }
         Snackbar.SnackbarLayout snackbarLayout= (Snackbar.SnackbarLayout) snackcustomviewbar.getView();
         snackbarLayout.setBackgroundColor(Color.TRANSPARENT);
@@ -105,10 +130,15 @@ public class SnackBarHelper {
      * @param customView
      */
     public static void showCustomViewLong(View view,View customView){
-        if(snackcustomviewbar==null){
+        if(anchorView==null){
+            anchorView=view;
             snackcustomviewbar=Snackbar.make(view,"",Snackbar.LENGTH_LONG);
         }else {
-            snackcustomviewbar.setDuration(Snackbar.LENGTH_LONG);
+            if(anchorView.equals(view)&&snackcustomviewbar!=null){
+                snackcustomviewbar.setDuration(Snackbar.LENGTH_LONG);
+            }else {
+                snackcustomviewbar=Snackbar.make(view,"",Snackbar.LENGTH_LONG);
+            }
         }
         Snackbar.SnackbarLayout snackbarLayout= (Snackbar.SnackbarLayout) snackcustomviewbar.getView();
         snackbarLayout.setBackgroundColor(Color.TRANSPARENT);
@@ -118,7 +148,7 @@ public class SnackBarHelper {
     }
 
     /**
-     * 关闭snackbar
+     * 关闭自定义snackbar
      */
     public static void closeCusBar(){
         if(snackcustomviewbar!=null){
