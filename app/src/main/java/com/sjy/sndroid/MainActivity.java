@@ -62,21 +62,26 @@ public class MainActivity extends AppCompatActivity {
                     SnackBarHelper.showCustomViewAlways(findViewById(R.id.btn),view);
                     isClick=true;
                 }*/
-                final View view=LayoutInflater.from(MainActivity.this).inflate(R.layout.head_view, null);
-                ImageView iv= view.findViewById(R.id.logo);
-                iv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toaster.showToast("拜拜");
-                        SnackBarHelper.closeCusBar();
-                    }
-                });
-                SnackBarHelper.showCustomViewAlways(findViewById(R.id.btn),view);
+//                final View view=LayoutInflater.from(MainActivity.this).inflate(R.layout.head_view, null);
+//                ImageView iv= view.findViewById(R.id.logo);
+//                iv.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toaster.showToast("拜拜");
+//                        SnackBarHelper.closeCusBar();
+//                    }
+//                });
+//                SnackBarHelper.showCustomViewAlways(findViewById(R.id.btn),view);
 //                Alerter.LoadingAlert(MainActivity.this).show();
 //                Alerter.PopAlert(MainActivity.this
 //                        ,LayoutInflater.from(MainActivity.this).inflate(R.layout.head_view,null)
 //                        ,findViewById(R.id.btn))
 //                        .show();
+//                Alerter.PopAlert(MainActivity.this
+//                        ,LayoutInflater.from(MainActivity.this).inflate(R.layout.head_view,null)
+//                        ,findViewById(R.id.btn))
+//                        .show();
+                Alerter.LoadingAlert(MainActivity.this).show();
 
             }
         });

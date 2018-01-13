@@ -171,7 +171,7 @@ public class PopAlert implements IAlert {
 
     @Override
     public void destory() {
-        if(contentView!=null){
+        if(contentView!=null&&contentView.getParent()!=null){
             ((ViewGroup)contentView.getParent()).removeView(contentView);//移除控件
         }
     }

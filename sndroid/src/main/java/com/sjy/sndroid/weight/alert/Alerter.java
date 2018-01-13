@@ -63,6 +63,7 @@ public class Alerter {
     private static void destory(){
         popAlert=null;
         loadingAlert=null;
+        alerter=null;
         iAlert.destory();
     }
 
