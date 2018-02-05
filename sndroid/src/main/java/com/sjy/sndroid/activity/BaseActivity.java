@@ -32,12 +32,16 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     public Context mContext;
     public boolean isHideStateBar=false;//是否隐藏状态栏，默认不隐藏
     public boolean isTransStateBar=false;//是否透明状态栏，默认否，配合fitsystemwindow使用（可改变某一个activity的状态栏颜色）
+    static final String FRAGMENTS_TAG = "android:support:fragments";//activity保存fragment的键
     protected BaseActivity() {
 
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        if(savedInstanceState!=null){
+            savedInstanceState.putParcelable(FRAGMENTS_TAG, null);//不保存fragment状态
+        }
         super.onCreate(savedInstanceState);
         AppManager.getInstance().addActivity(this);
         mActivity=this;

@@ -34,8 +34,6 @@ public class AppManager {
         try {
             if (activity != null) {
                 mActivityStack.remove(activity);
-                activity.finish();
-                activity = null;
             }
         } catch (Exception e) {
             e.printStackTrace();

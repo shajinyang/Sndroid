@@ -19,7 +19,7 @@
       在module的gradle里配置
       dependencies {
          ...
-      	 compile 'com.github.shajinyang:Sndroid:1.0.7'
+      	 compile 'com.github.shajinyang:Sndroid:1.0.8'
       }
 
       第三步：
